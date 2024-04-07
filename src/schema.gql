@@ -1,0 +1,25 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Portfolio {
+  id: Int!
+  userId: Float!
+  name: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type User {
+  id: Int!
+  username: String!
+  email: String!
+  password: String!
+  portfolios: [Portfolio!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  getUser(id: Int!): User!
+}

@@ -24,7 +24,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.model.ts'],
+      files: ['*.model.ts', '*.resolver.ts'],
       rules: {
         '@typescript-eslint/no-unused-vars': 'off',
       },
