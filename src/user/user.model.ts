@@ -2,7 +2,7 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Portfolio } from 'src/portfolio/portfolio.model';
 
 @ObjectType()
-export class User {
+export class UserModel {
   @Field((type) => Int)
   id: number;
 

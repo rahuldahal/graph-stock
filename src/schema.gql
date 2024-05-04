@@ -10,7 +10,7 @@ type Portfolio {
   updatedAt: String!
 }
 
-type User {
+type UserModel {
   id: Int!
   username: String!
   email: String!
@@ -21,5 +21,15 @@ type User {
 }
 
 type Query {
-  getUser(id: Int!): User!
+  findAll: [UserModel!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserDto!): UserModel!
+}
+
+input CreateUserDto {
+  username: String!
+  email: String!
+  password: String!
 }

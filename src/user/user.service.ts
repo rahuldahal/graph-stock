@@ -1,38 +1,22 @@
+import { Repository } from 'typeorm';
+import { UserEntity } from './user.entity';
+import { CreateUserDto } from './user.dto';
 import { Injectable } from '@nestjs/common';
-import { TUser } from './user.model';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UserService {
-  private readonly users: TUser[] = [
-    {
-      id: 1,
-      username: 'user1',
-      email: 'user1@example.com',
-      createdAt: '2024-04-07T12:00:00Z',
-      updatedAt: '2024-04-07T12:00:00Z',
-    },
-    {
-      id: 2,
-      username: 'user2',
-      email: 'user2@example.com',
-      createdAt: '2024-04-07T12:00:00Z',
-      updatedAt: '2024-04-07T12:00:00Z',
-    },
-    {
-      id: 3,
-      username: 'user3',
-      email: 'user3@example.com',
-      createdAt: '2024-04-07T12:00:00Z',
-      updatedAt: '2024-04-07T12:00:00Z',
-    },
-  ];
+  constructor(
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
+  ) {}
 
-  // create(user: TUser) {
-  //   this.users.push(user);
-  // }
+  async create(data: CreateUserDto): Promise<UserEntity> {
+    const user = this.userRepository.create(data);
+    return this.userRepository.save(user);
+  }
 
-  findOneById(id: number): TUser {
-    console.log(`Queriying for user id: ${id}`);
-    return this.users.find((user) => user.id === id);
+  async findAll(): Promise<UserEntity[]> {
+    return this.userRepository.find();
   }
 }
