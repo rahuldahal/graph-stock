@@ -1,4 +1,3 @@
-import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -15,7 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         password: configService.getOrThrow('DB_PASSWORD'),
         database: configService.getOrThrow('DB_NAME'),
         synchronize: configService.getOrThrow('DB_SYNCHRONIZE'),
-        entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+        entities: [__dirname + '/../**/*.entity.{js,ts}'],
       }),
       inject: [ConfigService],
     }),
