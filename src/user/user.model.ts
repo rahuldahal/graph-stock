@@ -1,14 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Portfolio } from 'src/portfolio/portfolio.model';
 
-export interface TUser {
-  id: number;
-  username: string;
-  email: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 @ObjectType()
 export class User {
   @Field((type) => Int)
